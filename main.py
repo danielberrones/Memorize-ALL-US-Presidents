@@ -61,8 +61,8 @@ while True:
     userResponse = input(f'U.S. President #{ran}: \n')
 
     if userResponse == "exit":
-        print(f'Total Correct: {len(correct)}, {correct}\n')
-        print(f'Total Wrong: {len(wrong)}, {wrong}')
+        print(f'Total Correct: {len(correct)}, \n{correct}\n')
+        print(f'Total Wrong: {len(wrong)}, \n{wrong}')
         exit()
     elif userResponse == correctAnswer:
         tup = (userResponse,ran)
