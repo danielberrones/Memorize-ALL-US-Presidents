@@ -72,8 +72,8 @@ while True:
         tup = (userResponse,ran)
         wrong.append(tup)
         print(d.get((userResponse),"That's wrong.\n"))
+        
         hintOrNo = input("Do you want a hint? (y/n)\n")
-
         if hintOrNo == 'y':
             print(correctAnswer)
         elif hintOrNo == 'n':
