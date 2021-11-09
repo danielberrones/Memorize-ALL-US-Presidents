@@ -60,32 +60,50 @@ correct = []
 wrong = []
 hintCounter = 0
 
-print("Learn the U.S. Presidents")
-sleep(2)
-print("To exit type 'exit'")
-print("To show scores type 'scores'")
-print("To show list of U.S. Presidents type 'pres'")  
-print("------------------------")
-input("Hit Enter to begin...")
-def clear():
-    print('\n'*30)
+def printIntro():
+    print("Learn the U.S. Presidents")
+    sleep(1)
+
+printIntro()
+
+def showMenu():
+    print("Menu")
+    print("------------------------")
+    print("'score'- show current score")
+    print("'pres' - show all presidents")  
+    print("'exit' - exit game")
+    print("'menu' - show menu")
+    print("'clear' - clear screen")
+    print("------------------------")
+    input("Hit Enter to continue...")
+
+showMenu()
+
+def clearScreen():
+    print('\n'*50)
+
+def showStats():
+    print(f'Total Hints: {hintCounter}\n')
+    print(f'Total Correct: {len(correct)},\n{correct}\n')
+    print(f'Total Wrong: {len(wrong)}, \n{wrong}')
+
 
 while True:
     ranNum = randint(1,46)
     correctAnswer = presidents[ranNum]
     userResponse = input(f'\nU.S. President #{ranNum}: \n')
 
-    if userResponse == "scores":
-        print(f'Total Hints: {hintCounter}\n')
-        print(f'Total Correct: {len(correct)},\n{correct}\n')
-        print(f'Total Wrong: {len(wrong)}, \n{wrong}')
+    if userResponse == "score":
+        showStats()
     elif userResponse == "pres":
         listPres()
     elif userResponse == "exit":
-        print(f'Total Hints: {hintCounter}\n')
-        print(f'Total Correct: {len(correct)},\n{correct}\n')
-        print(f'Total Wrong: {len(wrong)}, \n{wrong}')
+        showStats()
         exit()
+    elif userResponse == "menu":
+        showMenu()
+    elif userResponse == "clear":
+        clearScreen()
     elif userResponse == correctAnswer:
         tup = (userResponse,ranNum)
         correct.append(tup)
