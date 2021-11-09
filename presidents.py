@@ -51,8 +51,9 @@ presidents = {
     46: "Joe Biden",
 }
 
-v = [v for v in presidents.values()]
+
 def listPres():
+    v = [v for v in presidents.values()]
     for x in v:
         print(x)
 
