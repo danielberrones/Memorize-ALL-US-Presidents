@@ -51,15 +51,14 @@ presidents = {
     46: "Joe Biden",
 }
 
+correct = []
+wrong = []
+hintCounter = 0
 
 def listPres():
     v = [v for v in presidents.values()]
     for x in v:
         print(x)
-
-correct = []
-wrong = []
-hintCounter = 0
 
 def printIntro():
     print("Learn the U.S. Presidents")
@@ -88,35 +87,39 @@ def showStats():
     print(f'Total Correct: {len(correct)},\n{correct}\n')
     print(f'Total Wrong: {len(wrong)}, \n{wrong}')
 
+def main():
+    while True:
+        ranNum = randint(1,46)
+        correctAnswer = presidents[ranNum]
+        userResponse = input(f'\nU.S. President #{ranNum}: \n')
 
-while True:
-    ranNum = randint(1,46)
-    correctAnswer = presidents[ranNum]
-    userResponse = input(f'\nU.S. President #{ranNum}: \n')
+        if userResponse == "score":
+            showStats()
+        elif userResponse == "pres":
+            listPres()
+        elif userResponse == "exit":
+            showStats()
+            exit()
+        elif userResponse == "menu":
+            showMenu()
+        elif userResponse == "clear":
+            clearScreen()
+        elif userResponse == correctAnswer:
+            tup = (userResponse,ranNum)
+            correct.append(tup)
+            print("Correct!\n")
+        else:
+            tup = (userResponse,ranNum)
+            wrong.append(tup)
+            print(presidents.get((userResponse),"Wrong."))
 
-    if userResponse == "score":
-        showStats()
-    elif userResponse == "pres":
-        listPres()
-    elif userResponse == "exit":
-        showStats()
-        exit()
-    elif userResponse == "menu":
-        showMenu()
-    elif userResponse == "clear":
-        clearScreen()
-    elif userResponse == correctAnswer:
-        tup = (userResponse,ranNum)
-        correct.append(tup)
-        print("Correct!\n")
-    else:
-        tup = (userResponse,ranNum)
-        wrong.append(tup)
-        print(presidents.get((userResponse),"Wrong."))
-        
-        hintOrNo = input("Need a hint? (y/n)\n")
-        if hintOrNo == 'y':
-            hintCounter += 1 
-            print(correctAnswer)
-        elif hintOrNo == 'n':
-            continue
+            hintOrNo = input("Need a hint? (y/n)\n")
+            if hintOrNo == 'y':
+                hintCounter += 1 
+                print(correctAnswer)
+            elif hintOrNo == 'n':
+                continue
+                
+               
+
+main()
