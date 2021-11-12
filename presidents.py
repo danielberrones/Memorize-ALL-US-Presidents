@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, shuffle
 from sys import exit
 from time import sleep
 
@@ -66,13 +66,17 @@ class Game:
     def listPres(self):
         v = [v for v in self.presidents.items()]
         print(v)
+        sleep(5)
 
     def printIntro(self):
         self.clearScreen(2)
         print("Learn the U.S. Presidents!")
+        sleep(1.5)
 
     def showMenu(self):
-        print("\n[Menu]")
+        self.clearScreen(35)
+        print("[Menu]")
+        sleep(.5)
         print("'clear' - clear screen")
         sleep(.5)
         print("'exit' - exit game")
@@ -81,12 +85,13 @@ class Game:
         sleep(.5)
         print("'pres' - show all presidents")  
         sleep(.5)
-        print("'score'- show current score")
-        sleep(.5)
+        print("'stats'- show stats")
+        sleep(2)
         input("\nHit enter to continue game...")
 
     def showStats(self):
-        self.clearScreen(3)
+        self.clearScreen(5)
+        print("[Stats]")
         print(f'Total Hints: {self.hintCounter}\n')
         print(f'Total Correct: {len(self.correct)},\n{self.correct}\n')
         print(f'Total Wrong: {len(self.wrong)}, \n{self.wrong}')
@@ -96,13 +101,13 @@ def main():
     game = Game()
     game.printIntro()
     game.showMenu()
-
-    while True:
-        ranNum = randint(1,46)
-        correctAnswer = game.presidents[ranNum]
-        userResponse = input(f'\nU.S. President #{ranNum}: \n')
-
-        if userResponse == "score":
+    presRange = [i for i in range(1,47)]
+    shuffle(presRange)
+    for i in presRange:
+        correctAnswer = game.presidents[i]
+        game.clearScreen(35)
+        userResponse = input(f'\nU.S. President #{i}: \n')
+        if userResponse == "stats":
             game.showStats()
         elif userResponse == "pres":
             game.listPres()
@@ -114,20 +119,24 @@ def main():
         elif userResponse == "clear":
             game.clearScreen(35)
         elif userResponse == correctAnswer:
-            tup = (userResponse,ranNum)
+            tup = (userResponse,i)
             game.correct.append(tup)
             print("Correct!\n")
+            sleep(1)
         else:
-            tup = (userResponse,ranNum)
+            tup = (userResponse,i)
             game.wrong.append(tup)
             print(game.presidents.get((userResponse),"Wrong."))
-
-            hintOrNo = input("Need a hint? (y/n)\n")
+            sleep(1)
+            hintOrNo = input("Want a hint? (y/n)\n")
             if hintOrNo == 'y':
                 game.hintCounter += 1 
                 print(correctAnswer)
+                sleep(2)
             elif hintOrNo == 'n':
                 continue
+    game.showStats()
+    game.exitGame()
 
 
 main()
