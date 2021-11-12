@@ -56,10 +56,6 @@ class Game:
             46: "Joe Biden"
             }   
 
-    def clearScreen(self, lines):
-        lines = int(lines)
-        print('\n' * lines)
-
     def exitGame(self):
         exit()
 
@@ -69,15 +65,11 @@ class Game:
         sleep(5)
 
     def printIntro(self):
-        self.clearScreen(2)
-        print("Learn the U.S. Presidents!")
+        print("\n\nLearn the U.S. Presidents!")
         sleep(1.5)
 
     def showMenu(self):
-        self.clearScreen(35)
-        print("[Menu]")
-        sleep(.5)
-        print("'clear' - clear screen")
+        print("\n\n\n\n[Menu]")
         sleep(.5)
         print("'exit' - exit game")
         sleep(.5)
@@ -90,11 +82,11 @@ class Game:
         input("\nHit enter to continue game...")
 
     def showStats(self):
-        self.clearScreen(5)
-        print("[Stats]")
+        print("\n\n\n\n[Stats]")
         print(f'Total Hints: {self.hintCounter}\n')
         print(f'Total Correct: {len(self.correct)},\n{self.correct}\n')
         print(f'Total Wrong: {len(self.wrong)}, \n{self.wrong}')
+        sleep(3)
 
 
 def main():
@@ -105,8 +97,7 @@ def main():
     shuffle(presRange)
     for i in presRange:
         correctAnswer = game.presidents[i]
-        game.clearScreen(35)
-        userResponse = input(f'\nU.S. President #{i}: \n')
+        userResponse = input(f'\n\n\n\nU.S. President #{i}: \n')
         if userResponse == "stats":
             game.showStats()
         elif userResponse == "pres":
@@ -116,8 +107,6 @@ def main():
             game.exitGame()
         elif userResponse == "menu":
             game.showMenu()
-        elif userResponse == "clear":
-            game.clearScreen(35)
         elif userResponse == correctAnswer:
             tup = (userResponse,i)
             game.correct.append(tup)
