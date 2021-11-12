@@ -1,4 +1,4 @@
-from random import randint, shuffle
+from random import shuffle
 from sys import exit
 from time import sleep
 
