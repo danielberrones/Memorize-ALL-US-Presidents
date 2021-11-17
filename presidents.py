@@ -111,7 +111,6 @@ def main():
             tup = (userResponse,i)
             game.correct.append(tup)
             print("Correct!\n")
-            sleep(1)
         else:
             tup = (userResponse,i)
             game.wrong.append(tup)
