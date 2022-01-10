@@ -65,7 +65,7 @@ class Game:
         sleep(5)
 
     def printIntro(self):
-        print("\n\nLearn the U.S. Presidents!")
+        print("\n\nLearn the U.S. Presidents!\n")
         sleep(1.5)
 
     def showMenu(self):
@@ -80,6 +80,7 @@ class Game:
         print("'stats'- show stats")
         sleep(2)
         input("\nHit enter to continue game...")
+        print("\n"*40) 
 
     def showStats(self):
         print("\n\n\n\n[Stats]")
@@ -92,6 +93,7 @@ class Game:
 def main():
     game = Game()
     game.printIntro()
+    game.listPres()
     game.showMenu()
     presRange = [i for i in range(1,47)]
     shuffle(presRange)
