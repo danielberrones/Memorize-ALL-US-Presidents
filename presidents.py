@@ -65,11 +65,11 @@ class Game:
         sleep(5)
 
     def printIntro(self):
-        print("\n\nLearn the U.S. Presidents!")
+        print("\nLearn the U.S. Presidents!")
         sleep(1.5)
 
     def showMenu(self):
-        print("\n\n[Menu]")
+        print("\n[Menu]")
         sleep(.5)
         print("'exit' - exit game")
         sleep(.5)
